@@ -1,26 +1,127 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff7f3;
+  --foreground: #1b0e12;
+  --ink: #1b0e12;
+  --rose: #f1697b;
+  --wine: #6a1b2b;
+  --blush: #f9e2e1;
+  --cream: #fff7f3;
+  --sand: #f2ece8;
+  --shadow: #2a0f16;
+  --card: #fffaf7;
+  --glass: rgba(255, 255, 255, 0.85);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-rose: var(--rose);
+  --color-wine: var(--wine);
+  --color-blush: var(--blush);
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --color-card: var(--card);
+  --color-shadow: var(--shadow);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #14070b;
+    --foreground: #f6ece7;
+    --ink: #f6ece7;
+    --card: #1f0c12;
+    --glass: rgba(31, 12, 18, 0.82);
   }
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(circle at top left, #ffe6e1 0%, transparent 55%),
+    radial-gradient(circle at 20% 40%, #fff1e8 0%, transparent 45%),
+    linear-gradient(135deg, #fff7f3 0%, #fde7e2 45%, #f7e1df 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+}
+
+.valentine-grid {
+  background-image: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.7) 1px,
+      transparent 1px),
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.7) 1px,
+      transparent 1px);
+  background-size: 48px 48px;
+  background-position: center;
+}
+
+.glass-card {
+  background: var(--glass);
+  box-shadow: 0 30px 60px -40px rgba(26, 8, 12, 0.35);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.headline {
+  font-family: var(--font-display), serif;
+}
+
+.fade-in {
+  animation: fade-in 600ms ease-out both;
+}
+
+.floaty {
+  animation: floaty 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .fade-in,
+  .floaty {
+    animation: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floaty {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: radial-gradient(circle at top left, #2b0c13 0%, transparent 55%),
+      radial-gradient(circle at 25% 30%, #1c0910 0%, transparent 45%),
+      linear-gradient(135deg, #14070b 0%, #1b0a12 40%, #15070b 100%);
+  }
+
+  .valentine-grid {
+    background-image: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.08) 1px,
+        transparent 1px),
+      linear-gradient(180deg,
+        rgba(255, 255, 255, 0.08) 1px,
+        transparent 1px);
+  }
 }
